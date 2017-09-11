@@ -47,13 +47,13 @@ public class Volo {
             posti.add(clienteattesa);*/
        Cliente inattesa=null;
         for (Cliente cliente : attesa) {
-            if(cliente.getNome().equals(nome) && cliente.getCognome().equals(cognome)){
+            if(cliente.getNome().equalsIgnoreCase(nome) && cliente.getCognome().equalsIgnoreCase(cognome)){
                 inattesa=cliente;
             }  
         }
        Cliente inposti=null;
             for (Cliente cliente : posti) {
-            if(cliente.getNome().equals(nome) && cliente.getCognome().equals(cognome)){
+            if(cliente.getNome().equalsIgnoreCase(nome) && cliente.getCognome().equalsIgnoreCase(cognome)){
                 inposti=cliente;
             }   
         }
@@ -78,11 +78,22 @@ public class Volo {
     }
     
     public int statistica(char ch){
-        //
-        // throw new CLienteNotFound("Nessun cliente con la lettera " +ch);
-        return 0;
+        int cognome=0;
+        for (Cliente cliente : posti) {
+            char primalettera =cliente.getCognome().charAt(0);
+            if (Character.toLowerCase(primalettera)== Character.toLowerCase(ch)) {
+              cognome++;
+            }
+        }
+        for (Cliente cliente : attesa) {
+            if (Character.toLowerCase(cliente.getCognome().charAt(0))==Character.toLowerCase(ch)) {
+              cognome++;
+          
+            }
+        
+        } 
+        return cognome;
     }
-    
     public void stampaClienti()
     {
         for (Cliente cliente : posti) {
