@@ -106,5 +106,11 @@ public class Volo {
     public String toString() {
         return "Volo "+id+", "+"posti liberi "+ postiLiberi()+ ", posti in attesa "+postiAttesa();
     }
+    public  void stampaClientiAttesa(){
+        for (Cliente cliente : attesa) {
+            System.out.println(cliente);
+            
+        }
+    }
     
 }
